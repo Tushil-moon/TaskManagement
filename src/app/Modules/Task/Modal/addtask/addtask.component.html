@@ -1,0 +1,88 @@
+<div class="modal-dialog modal-lg m-3" #taskmodal>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="taskModalLabel">{{_taskId$.value ? 'Edit Task' : 'Add New Task' }}</h5>
+            <button type="button" class=" btn btn-close bg-white" (click)="closeModal()"></button>
+        </div>
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+            <div class="modal-body">
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" placeholder="" formControlName="title" />
+                    <label>Title</label>
+                </div>
+                @if(taskForm.get('title')?.invalid && (taskForm.get('title')?.touched ||
+                submitted())){
+                <span>
+                    @if(taskForm.get('title')?.errors?.['required']){
+                    <p>Title is required</p>
+                    }
+                </span>
+                }
+                <div class="form-floating mb-3">
+                    <textarea class="form-control" placeholder="" formControlName="description" rows="5"></textarea>
+                    <label>Description</label>
+                </div>
+                @if(taskForm.get('description')?.invalid &&
+                (taskForm.get('description')?.touched || submitted())){
+                <span>
+                    @if(taskForm.get('description')?.errors?.['required']){
+                    <p>Description is required</p>
+                    }
+                </span>
+                }
+                <div class="form-floating mb-3">
+                    <input type="date" id="dueDate" name="dueDate" class="form-control" formControlName="dueDate" />
+                    <label for="dueDate">Due Date:</label>
+                </div>
+                @if(taskForm.get('dueDate')?.invalid &&
+                (taskForm.get('dueDate')?.touched || submitted())){
+                <span>
+                    @if(taskForm.get('dueDate')?.errors?.['required']){
+                    <p>Due Date is required</p>
+                    }
+                </span>
+                }
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="priority" formControlName="priority">
+                        <option value="" disabled selected>--select--</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <label for="priority">Priority:</label>
+                </div>
+                @if(taskForm.get('priority')?.invalid &&
+                (taskForm.get('priority')?.touched || submitted())){
+                <span>
+                    @if(taskForm.get('priority')?.errors?.['required']){
+                    <p>Priority is required</p>
+                    }
+                </span>
+                }
+                <div class="form-floating mb-3">
+                    <select class="form-select" id="status" formControlName="status">
+                        <option value="" disabled selected>--select--</option>
+                        <option value="new">New</option>
+                        <option value="pending">Pending</option>
+                        <option value="onhold">On hold</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="completed">Completed</option>
+                    </select>
+                    <label for="status">Status:</label>
+                </div>
+                @if(taskForm.get('status')?.invalid &&
+                (taskForm.get('status')?.touched || submitted())){
+                <span>
+                    @if(taskForm.get('status')?.errors?.['required']){
+                    <p>Status is required</p>
+                    }
+                </span>
+                }
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-dark">{{ _taskId$.value ? 'Update Task' : 'Save Task' }}</button>
+            </div>
+        </form>
+    </div>
+</div>

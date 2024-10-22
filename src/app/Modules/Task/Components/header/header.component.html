@@ -1,0 +1,16 @@
+<header class="bg-dark">
+  <div class="container">
+    <div class="row ">
+      <div class="col d-flex justify-content-start align-items-center">
+        <h1>Task Management</h1>
+      </div>
+      <div class="col  d-flex justify-content-end align-items-center">
+        @if (authService.isAuthenticate() === 'true') {
+          <button class="btn btn-light" (click)="logout()">
+            <i class="bi bi-box-arrow-left"></i> Logout
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+</header>

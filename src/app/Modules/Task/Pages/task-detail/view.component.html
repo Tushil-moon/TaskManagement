@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-lg">
+        <div class="card-header bg-dark text-white">
+          <h3 class="card-title mb-0">Task Details</h3>
+        </div>
+        <div class="card-body">
+          <!-- Task Title -->
+          <h2 class="card-title">{{ getTaskDetails()?.title }}</h2>
+
+          <!-- Task Description -->
+          <p class="card-text">{{ getTaskDetails()?.description }}</p>
+
+          <!-- Due Date -->
+          <div class="mb-3">
+            <strong>Due Date :</strong>
+            <span class="badge bg-info text-dark ms-2">{{ getTaskDetails()?.dueDate }}</span>
+          </div>
+
+          <!-- Priority -->
+          <div class="mb-3">
+            <strong>Priority : </strong>
+            <span class="badge" [ngClass]="{
+                'bg-danger': getTaskDetails()?.priority === 'high',
+                'bg-warning': getTaskDetails()?.priority === 'medium',
+                'bg-success': getTaskDetails()?.priority === 'low'
+              }">
+
+              {{ getTaskDetails()?.priority }}
+            </span>
+          </div>
+
+          <!-- Status -->
+          <div class="mb-3">
+            <strong>Status : </strong>
+            <span class="badge bg-primary">{{ getTaskDetails()?.status }}</span>
+          </div>
+        </div>
+        <div class="card-footer text-end" (click)="exit()">
+          <i class="bi bi-arrow-left-circle-fill"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

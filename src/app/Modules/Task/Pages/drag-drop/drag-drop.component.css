@@ -1,0 +1,179 @@
+.scroll-container {
+  position: relative;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  scrollbar-width: thin;
+  min-height: calc(100vh - 60px);
+  padding: 20px;
+  max-height: calc(100vh - 100px);
+  /* background-color: #bfbfbf; */
+  /* Adjusted for header height */
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.outercard::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.outercard {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-width: 250px;
+  /* Dynamically adjust width based on the number of cards */
+  flex: 1;
+  max-width: calc(100% / 3 - 20px);
+  min-height: 100vh;
+  /* Full height */
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  border: none;
+  border-radius: 8px;
+  background-color: rgb(237, 237, 237);
+}
+
+.outercard-header {
+  background-color: #f1f1f1;
+  /* Background color for the outer card header */
+  padding: 10px;
+  /* Add some padding */
+  position: sticky;
+  /* Make it sticky */
+  top: 0;
+  /* Fix it to the top */
+  z-index: 100;
+  /* Ensure it appears above other content */
+  font-size: 12px !important;
+}
+
+.outercard .body {
+  padding: 0 3px;
+}
+
+.innercard {
+  max-width: 250px;
+  margin-bottom: 3px;
+  border: 0;
+  border-radius: 6px;
+  max-width: calc(100%);
+}
+
+.innercard:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #eaf7ff;
+
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.status-pill {
+  padding: 3px 5px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: white;
+  text-transform: capitalize;
+}
+
+.status-pill.high {
+  background-color: #ff0707;
+}
+
+.status-pill.medium {
+  background-color: #e9bb33;
+}
+
+.status-pill.low {
+  background-color: #17a2b8;
+}
+
+
+
+.card-body {
+  padding: 15px;
+}
+
+.due-date {
+  margin: 0 0 10px 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.description {
+  margin: 0;
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Optional: FontAwesome icons (if used) */
+.far {
+  margin-right: 5px;
+  color: #555;
+}
+
+.search {
+padding: 20px 20px 0 20px;
+width: 300px;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  margin-right: 10px;
+}
+
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+}
+
+
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: white;
+  opacity: 0.9;
+
+}
+
+.cdk-drag-placeholder {
+  visibility: hidden;
+}

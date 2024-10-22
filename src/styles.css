@@ -1,0 +1,11 @@
+.card-footer a{
+    text-decoration: none;
+    color: rgb(35, 108, 254);
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-y: hidden; /* Hide vertical overflow */
+}

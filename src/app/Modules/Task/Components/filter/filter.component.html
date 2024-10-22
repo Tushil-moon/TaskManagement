@@ -1,0 +1,66 @@
+<!-- Status Dropdown -->
+<div class="row mb-2">
+    <div class="">
+        <button
+            class="btn btn-secondary d-inline-flex align-items-center rounded w-100 justify-content-between mb-2"
+            type="button" id="statusDropdown" data-bs-toggle="collapse" aria-expanded="true"
+            data-bs-target="#status-collapse">
+            Status
+            <i class="bi bi-chevron-down ms-2"></i>
+        </button>
+        <div class=" container " id="status-collapse">
+            <div class="list-unstyled fw-normal pb-1 small" (change)="onApply()">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="status-all" value="all"
+                        [(ngModel)]="selectedStatus" [checked]="selectedStatus() === 'all'" name="status" />
+                    <label class="form-check-label" for="status-all"> All </label>
+                </div>
+                @for(st of status(); track st){
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" [id]="st" [value]="st" [(ngModel)]="selectedStatus"
+                            name="status" />
+                        <label class="form-check-label" [for]="st">
+                            {{ st }}
+                        </label>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Priority Dropdown -->
+<div class="row mb-2">
+    <div class="">
+        <button
+            class="btn btn-secondary d-inline-flex align-items-center rounded collapsed w-100 justify-content-between mb-2"
+            type="button" id="priorityDropdown" data-bs-toggle="collapse" aria-expanded="true"
+            data-bs-target="#priority-collapse">
+            Priority
+            <i class="bi bi-chevron-down ms-2"></i>
+        </button>
+        <div class="collapsed container " id="priority-collapse">
+            <div class="list-unstyled fw-normal pb-1 small" (change)="onApply()">
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" id="priority-all" value="all"
+                        [(ngModel)]="selectedPriority" [checked]="selectedPriority() === 'all'" name="priority" />
+                    <label class="form-check-label" for="priority-all"> All </label>
+                </div>
+                @for(item of priority(); track item){
+                <div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" [id]="item" [value]="item"
+                            [(ngModel)]="selectedPriority" name="priority" />
+                        <label class="form-check-label" [for]="item">
+                            {{ item }}
+                        </label>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

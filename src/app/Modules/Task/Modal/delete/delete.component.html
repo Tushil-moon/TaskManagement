@@ -1,0 +1,24 @@
+<div class="overlay">
+    <div class="card ">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="card-title mb-0">Delete</h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          data-bs-dismiss="card"
+          (click)="closeModal()"
+        ></button>
+      </div>
+      <div class="card-body">
+        <p>Are you sure you want to delete?</p>
+      </div>
+      <div class="card-footer d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary" (click)="onYes(false)">
+          No
+        </button>
+        <button type="button" class="btn btn-primary ms-2"  (click)="onYes(true)">Yes</button>
+      </div>
+    </div>
+  </div>
+  

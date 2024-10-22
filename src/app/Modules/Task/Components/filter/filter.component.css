@@ -1,0 +1,12 @@
+label{
+    color: white;
+}
+.btn .bi-chevron-down {
+    transition: transform 0.2s ease-in-out;
+}
+.btn.collapsed .bi-chevron-down {
+    transform: rotate(0deg);
+}
+.btn:not(.collapsed) .bi-chevron-down {
+    transform: rotate(180deg);
+}

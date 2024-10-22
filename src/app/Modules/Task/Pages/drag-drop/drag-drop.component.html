@@ -1,0 +1,136 @@
+<div class="header">
+  <div class="title">
+    <h5>Task Management</h5>
+  </div>
+  
+  <div class="user">
+    <button class="logout-button" (click)="logout()">Logout</button>
+  </div>
+</div>
+<div class="search">
+  <app-search (searchString)="filterBySearch($event)"></app-search>
+</div>
+<div class="scroll-container " cdkDropListGroup>
+  <div class="card outercard" id="tasksList"  cdkDropList [cdkDropListData]="todo()"
+  (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['inProgressList','completeList','pendingList']">
+    <div class="outercard-header">
+      <h6 class="text-center">TO DO {{todo().length}} OF {{todo().length}}</h6>
+    </div>
+    <div class="card-body body">
+      @for (item of todo(); track $index) {
+        <div class="card innercard filtered-card" cdkDrag>
+          <div class="card-header">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <span class="status-pill  {{item.priority}}">{{item.priority}}</span>
+          </div>
+          <div class="card-body">
+            <p class="due-date">
+              <i class="bi bi-calendar-fill"></i> Due: {{ item.dueDate }}
+            </p>
+            <p class="description">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+      
+    </div>
+  </div>
+
+  <div class="card outercard" id="onholdList"  cdkDropList [cdkDropListData]="onHold()"
+  (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['inProgressList','pendingList','tasksList']">
+    <div class="outercard-header">
+      <h6 class="text-center">ON-HOLD</h6>
+    </div>
+    <div class="card-body body">
+      @for (item of onHold(); track $index) {
+        <div class="card innercard completed-card" cdkDrag>
+          <div class="card-header">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <span class="status-pill  {{item.priority}}">{{item.priority}}</span>
+          </div>
+          <div class="card-body">
+            <p class="due-date">
+              <i class="bi bi-calendar-fill"></i> Due: {{ item.dueDate }}
+            </p>
+            <p class="description">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+      
+    </div>
+  </div>
+
+  <div class="card outercard"  id="inProgressList" cdkDropList [cdkDropListData]="inprogress()"
+  (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['tasksList','completeList','pendingList']">
+    <div class="outercard-header">
+      <h6 class="text-center">IN-PROGRESS {{inprogress().length}} OF {{inprogress().length}}</h6>
+    </div>
+    <div class="card-body body">
+      @for (item of inprogress(); track $index) {
+        <div class="card innercard inprogress-card" cdkDrag>
+          <div class="card-header">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <span class="status-pill  {{item.priority}}">{{ item.priority }}</span>
+          </div>
+          <div class="card-body">
+            <p class="due-date">
+              <i class="bi bi-calendar-fill"></i> Due: {{ item.dueDate }}
+            </p>
+            <p class="description">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+      
+    </div>
+  </div>
+
+  <div class="card outercard" id="pendingList" cdkDropList [cdkDropListData]="pending()"
+  (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['completeList','inProgressList','tasksList']">
+    <div class="outercard-header">
+      <h6 class="text-center">PENDING</h6>
+    </div>
+    <div class="card-body body">
+      @for (item of pending(); track $index) {
+        <div class="card innercard" cdkDrag>
+          <div class="card-header">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <span class="status-pill {{item.priority}}">{{ item.priority }}</span>
+          </div>
+          <div class="card-body">
+            <p class="due-date">
+              <i class="bi bi-calendar-fill"></i> Due: {{ item.dueDate }}
+            </p>
+            <p class="description">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+      
+    </div>
+  </div>
+
+  <div class="card outercard" id="completeList"  cdkDropList [cdkDropListData]="complete()"
+  (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['inProgressList','pendingList','tasksList']">
+    <div class="outercard-header">
+      <h6 class="text-center">COMPLETED</h6>
+    </div>
+    <div class="card-body body">
+      @for (item of complete(); track $index) {
+        <div class="card innercard completed-card" cdkDrag>
+          <div class="card-header">
+            <h5 class="card-title">{{ item.title }}</h5>
+            <span class="status-pill  {{item.priority}}">{{item.priority}}</span>
+          </div>
+          <div class="card-body">
+            <p class="due-date">
+              <i class="bi bi-calendar-fill"></i> Completed: {{ item.dueDate }}
+            </p>
+            <p class="description">{{ item.description }}</p>
+          </div>
+        </div>
+      }
+      
+    </div>
+  </div>
+  
+
+  
+</div>

@@ -1,0 +1,50 @@
+<div class="login-container">
+    <div class="card bg-dark text-light border-grey">
+        <div class="text-center my-5">
+            <h2>Task Management System</h2>
+        </div>
+        <div class="card-header">
+            <h3 class="text-start mb-4">Login</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email"
+                        formControlName="email" />
+                </div>
+                @if(userData.get('email')?.invalid && (userData.get('email')?.touched ||
+                submitted())){
+                <small class="text-danger">
+                    @if(userData.get('email')?.errors?.['required']){
+                    <p>Email is required</p>
+                    } @if(userData.get('email')?.errors?.['email']){
+                    <p>Invalid email address</p>
+                    }
+                </small>
+                }
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password"
+                        formControlName="password" />
+                </div>
+                @if((userData.get('password')?.touched ) &&
+                ( submitted() || userData.get('password')?.errors  ||  userData.get('password')?.invalid)){
+                <small class="text-danger">
+                    @if(userData.get('password')?.errors?.['required']){
+                    <p>Password is required</p>
+                    } @if(userData.get('password')?.errors?.['minlength']){
+                    <p>Password must be 6 character long</p>
+                    }
+                </small>
+                }
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <a [routerLink]="['/sign-up']" target="_self">Create new account?</a>
+        </div>
+    </div>
+</div>

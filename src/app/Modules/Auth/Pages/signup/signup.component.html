@@ -1,0 +1,36 @@
+<div class="login-container">
+    <div class="card bg-dark text-light border-grey">
+        <div class="text-center my-4">
+            <h2>Task Management System</h2>
+        </div>
+        <div class="card-header">
+            <h3 class="text-start mb-4">Sign Up</h3>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="userData" (ngSubmit)="onSubmit()">
+                <div class="mb-3" >
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" formControlName="email" />
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="username" />
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" formControlName="password" />
+                </div>
+                <div class="mb-3">
+                    <label for="confirmpassword" class="form-label">Confirm Password</label>
+                    <input type="confirmpassword" class="form-control" id="confirmpassword" placeholder="Enter confirm password" formControlName="confirmpassword" />
+                </div>
+                <div class="d-grid mb-3">
+                    <button type="submit" class="btn btn-primary">Signup</button>
+                </div>
+            </form>
+        </div>
+        <div class="card-footer " >
+            <a [routerLink]="['/login']" target="_self" >Already sign-up!</a>
+        </div>
+    </div>
+</div>

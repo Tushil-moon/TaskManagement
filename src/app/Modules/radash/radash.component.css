@@ -1,0 +1,42 @@
+.table-responsive thead tr th {
+    position: sticky;
+    top: 0;
+    border-bottom: 2px solid #dbd7d7
+}
+
+/* Optional: Add border to header cells */
+th tr {
+    z-index: 1;
+}
+
+
+.table-responsive {
+    max-height: 30rem;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for WebKit browsers */
+.table-responsive::-webkit-scrollbar {
+    width: 10px;
+    /* Width of the scrollbar */
+}
+
+.table-responsive::-webkit-scrollbar-track {
+    background: transparent;
+    /* Background of the scrollbar track */
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Color of the scrollbar thumb */
+    border-radius: 6px;
+    /* Rounded corners of the scrollbar thumb */
+}
+
+.table-responsive::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Color of the scrollbar thumb on hover */
+}
+  .container{
+    color: white;
+  }

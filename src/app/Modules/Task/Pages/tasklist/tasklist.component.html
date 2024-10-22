@@ -1,0 +1,149 @@
+<app-header></app-header>
+
+<div class=" bg-dark">
+  <div class="row mx-5">
+    <div class="col-lg-2 d-flex flex-column col-md-4 mb-2 mt-5 ">
+      <app-filter (filters)="filter($event)"></app-filter>
+      <div class="mb-2">
+        <button
+          class="btn btn-secondary d-inline-flex align-items-center rounded collapsed w-100 justify-content-between"
+          type="button" id="statusDropdown" data-bs-toggle="collapse" aria-expanded="false"
+          data-bs-target="#sort-collapsed">
+          Sort
+          <i class="bi bi-chevron-down ms-2"></i>
+        </button>
+        <div class="collapse container" id="sort-collapsed">
+          <div class="list-unstyled fw-normal pb-1 small">
+            <p class="mt-3">Sort by DueDate:</p>
+            <div class="container" (change)="onSortDueDate()">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Ascending" id="Ascending" [(ngModel)]="selectedSort"
+                  name="Ascending" />
+                <label class="form-check-label" for="Ascending">
+                  Ascending
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Descending" id="Descending"
+                  [(ngModel)]="selectedSort" name="Descending" />
+                <label class="form-check-label" for="Descending">
+                  Descending
+                </label>
+              </div>
+            </div>
+            <p class="mt-3">Sort by Priority:</p>
+            <div class="container" (change)="onSortPriority()">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Ascending" id="High" [(ngModel)]="selectedSortPrio"
+                  name="high" />
+                <label class="form-check-label" for="High"> Ascending </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Descending" id="Medium"
+                  [(ngModel)]="selectedSortPrio" name="medium" />
+                <label class="form-check-label" for="Medium">
+                  Descending
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-10 col-md-8 bg-dark mt-5">
+      <div class="row">
+        <div class="col-lg-10 col-md-8 col-6 ">
+          <app-search (searchString)="filterBySearch($event)"></app-search>
+        </div>
+        <div class="col-lg-2 col-md-4 col-6 ">
+          <div class="col d-flex justify-content-end align-items-center">
+            <button class="btn btn-light" (click)="openModal()">
+              <i class="bi bi-file-earmark-plus"></i> Add Task
+            </button>
+          </div>
+        </div>
+      </div>
+      @if(loader._isLoading | async){
+      <div class="row isloader">
+        <div class="spinner-border text-white " role="status">
+
+          <span class="sr-only"></span>
+
+        </div>
+      </div>
+      }
+      <div class="row">
+        @if (filteredTasks().length > 0 && (loader._isLoading.value === false)) {
+        <div class="table-responsive">
+          <table class="table table-dark table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Due Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Priority</th>
+                <th scope="col" class="text-center">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="task-list">
+              @for (task of filteredTasks(); track task.id; let id = $index) {
+              <tr  class="example-box">
+                <td>
+                  {{ task.title }}
+                </td>
+                <td class="fixed-width">
+                  <div>
+                    <span [ngClass]="{ truncated: isTruncated }">
+                      {{
+                      isTruncated
+                      ? (task.description | truncate)
+                      : task.description
+                      }}
+                    </span>
+                    @if(task.description.length > maxLength()){
+                    <button (click)="toggleDescription()" class="btn btn-link p-0">
+                      {{ isTruncated ? "Show more" : "Show less" }}
+                    </button>
+                    }
+                  </div>
+                </td>
+                <td>
+                  {{ task.dueDate }}
+                </td>
+                <td [ngClass]="getStatusClass(task.status)">
+                  {{ task.status | titlecase}}
+                </td>
+                <td>
+                  {{ task.priority | titlecase}}
+                </td>
+                <td>
+                  <div class="action-link">
+                    <a class="view" (click)="onView(task.id)">
+                      View <span><i class="fi fi-rr-eye ms-1"></i></span>
+                    </a>
+                    <a class="edit" (click)="onEdit(task.id)">
+                      Edit <i class="fi fi-rr-edit ms-1"></i>
+                    </a>
+                    <a class="delete" (click)="onDelete(task.id)">
+                      Delete <i class="fi fi-rr-trash ms-1"></i>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+        } @else {
+        @if(( filteredTasks().length == 0) && (loader._isLoading.value === false)){
+        <div class="noItem loader">
+          <i class="bi bi-ban"></i>
+          <p>No task found</p>
+        </div>
+        }
+        }
+      </div>
+    </div>
+  </div>
+</div>
