@@ -10,7 +10,12 @@
 <div class="search">
   <app-search (searchString)="filterBySearch($event)"></app-search>
 </div>
-<div class="scroll-container " cdkDropListGroup>
+<div class="d-flex justify-content-center align-items-center min-vh-100" *ngIf="loading$ | async">
+  <div class="spinner-grow " role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div class="scroll-container " cdkDropListGroup *ngIf="!(loading$ | async)">
   <div class="card outercard" id="tasksList"  cdkDropList [cdkDropListData]="todo()"
   (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="['inProgressList','completeList','pendingList']">
     <div class="outercard-header">

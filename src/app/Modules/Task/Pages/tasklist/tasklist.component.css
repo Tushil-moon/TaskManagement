@@ -4,6 +4,10 @@ a {
     cursor: pointer;
 }
 
+.collapse {
+    font-size: 12px;
+}
+
 .view {
     color: rgb(0, 132, 255);
 }
@@ -27,15 +31,17 @@ a {
 .pending {
     color: rgb(0, 255, 221);
 }
-.onhold{
+
+.onhold {
     color: rgb(255, 68, 0);
 }
-.new{
+
+.new {
     color: rgb(19, 173, 255);
 }
 
 th {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .btn .bi-chevron-down {
@@ -82,8 +88,16 @@ label {
 /* Optional: Add border to header cells */
 th tr {
     z-index: 1;
+
 }
 
+tr {
+    font-size: 12px;
+}
+
+.list-unstyled {
+    font-size: 12px;
+}
 
 .table-responsive {
     max-height: 30rem;
@@ -92,7 +106,7 @@ th tr {
 
 /* Custom scrollbar for WebKit browsers */
 .table-responsive::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     /* Width of the scrollbar */
 }
 
@@ -121,46 +135,22 @@ th tr {
 }
 
 .noItem i {
-    font-size: 50px;
+    font-size: 35px;
     color: #dbd7d7;
 }
+
 .loader {
-    padding: 10rem 0;;
+    padding: 10rem 0;
+    ;
     display: flex;
     align-items: center;
     justify-content: center;
-    
-  }
-  .isloader{
+
+}
+
+.isloader {
     justify-content: center;
     padding: 12rem 0;
     display: flex;
-  }
-
-  .cdk-drag-preview {
-    border: none;
-    box-sizing: border-box;
-    border-radius: 4px;
-    box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
-                0 8px 10px 1px rgba(0, 0, 0, 0.14),
-                0 3px 14px 2px rgba(0, 0, 0, 0.12);
-  }
-  
-  .cdk-drag-placeholder {
-    opacity: 0;
-  }
-  
-  .cdk-drag-animating {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
-  
-  .example-box:last-child {
-    border: none;
-  }
-  
-  .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
-    transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-  }
- .container{
-    background-color: black;
- }
+    font-size: 12px;
+}

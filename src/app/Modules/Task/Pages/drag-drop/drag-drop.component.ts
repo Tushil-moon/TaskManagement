@@ -9,12 +9,13 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { BehaviorSubject, filter, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, tap } from 'rxjs';
 import { Task } from '../../Models/task';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { SearchComponent } from '../../Components/search/search.component';
 import { AuthService } from '../../../../Services/auth/auth.service';
 import { Router } from '@angular/router';
+import { TaskStoreService } from '../../../../Services/Stores/task-store.service';
 
 declare var $: any;
 @Component({
@@ -27,6 +28,7 @@ declare var $: any;
     DragDropModule,
     SearchComponent,
   ],
+  providers: [TaskStoreService],
   templateUrl: './drag-drop.component.html',
   styleUrl: './drag-drop.component.css',
 })
@@ -34,6 +36,11 @@ export class DragDropComponent {
   private taskService = inject(TaskService);
   auth = inject(AuthService);
   private router = inject(Router);
+  private taskStore = inject(TaskStoreService);
+
+  /** observe task and loading state from taskstore */
+  tasks$ = this.taskStore.tasks$;
+  loading$ = this.taskStore.loading$;
 
   /**
    * Reactive signal containing the list of tasks.
@@ -41,16 +48,6 @@ export class DragDropComponent {
    * This signal updates the view whenever the list of tasks changes.
    */
   tasks = signal<Task[]>([]);
-
-  /**
-   * take behaviour subjec with initial value false
-   */
-  private _getAllTask$ = new BehaviorSubject<boolean>(true);
-
-  /**
-   * take subject as observable
-   */
-  getAllTask$ = this._getAllTask$.asObservable();
 
   /**
    * hold the value of task filter by status
@@ -81,10 +78,8 @@ export class DragDropComponent {
    * convert observable to signal for call api if the behaviour subject emit true
    */
   getTask$ = toSignal(
-    this._getAllTask$.pipe(
-      filter((add) => !!add),
-      switchMap(() => this.taskService.getAllTask()),
-      tap((task: Task[]) => {
+    this.tasks$.pipe(
+      tap((task) => {
         this.tasks.set(this.sortTasksByOrder(task));
         this.divideTasksByStatus(this.sortTasksByOrder(task));
       })
@@ -128,11 +123,8 @@ export class DragDropComponent {
           taskToMove.status = 'pending';
           break;
       }
-      this.taskService.editTask(taskToMove, taskToMove.id).subscribe((res) => {
-        console.log(res);
-      });
     }
-    this.updateTaskOrder(event.container.data);
+    this.taskStore.updateTaskOrder(event.container.data);
   }
 
   /**
@@ -159,7 +151,7 @@ export class DragDropComponent {
     const filteredTasks = this.tasks().filter((task) =>
       task.title.toLowerCase().includes(lowerSearchString)
     );
-    console.log(filteredTasks)
+    console.log(filteredTasks);
     this.divideTasksByStatus(filteredTasks);
   }
 

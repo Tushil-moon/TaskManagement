@@ -10,3 +10,7 @@ label{
 .btn:not(.collapsed) .bi-chevron-down {
     transform: rotate(180deg);
 }
+
+.list-unstyled{
+    font-size: 12px;
+}

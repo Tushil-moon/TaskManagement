@@ -8,8 +8,8 @@
             Status
             <i class="bi bi-chevron-down ms-2"></i>
         </button>
-        <div class=" container " id="status-collapse">
-            <div class="list-unstyled fw-normal pb-1 small" (change)="onApply()">
+        <div class="collapse container " id="status-collapse">
+            <div class="list-unstyled" (change)="onApply()">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" id="status-all" value="all"
                         [(ngModel)]="selectedStatus" [checked]="selectedStatus() === 'all'" name="status" />
@@ -35,13 +35,13 @@
 <div class="row mb-2">
     <div class="">
         <button
-            class="btn btn-secondary d-inline-flex align-items-center rounded collapsed w-100 justify-content-between mb-2"
-            type="button" id="priorityDropdown" data-bs-toggle="collapse" aria-expanded="true"
+            class="btn btn-secondary d-inline-flex align-items-center rounded  w-100 justify-content-between mb-2"
+            type="button" id="priorityDropdown" data-bs-toggle="collapse" aria-expanded="false"
             data-bs-target="#priority-collapse">
             Priority
             <i class="bi bi-chevron-down ms-2"></i>
         </button>
-        <div class="collapsed container " id="priority-collapse">
+        <div class="collapse container" id="priority-collapse">
             <div class="list-unstyled fw-normal pb-1 small" (change)="onApply()">
                 <div class="form-check">
                     <input class="form-check-input" type="radio" id="priority-all" value="all"
