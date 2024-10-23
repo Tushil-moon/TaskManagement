@@ -11,11 +11,12 @@ import { CommonModule } from '@angular/common';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { BehaviorSubject, filter, switchMap, tap, map } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { NgxEditorModule, Toolbar , Editor} from 'ngx-editor';
 
 @Component({
   selector: 'app-addtask',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,NgxEditorModule],
   templateUrl: './addtask.component.html',
   styleUrl: './addtask.component.css',
 })
@@ -25,6 +26,22 @@ export class AddtaskComponent {
   private route = inject(ActivatedRoute);
   private taskService = inject(TaskService);
   private activeModal = inject(NgbActiveModal);
+  editor:Editor;
+  toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['underline', 'strike'],
+    ['code', 'blockquote'],
+    ['ordered_list', 'bullet_list'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    ['link', 'image'],
+    ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
+
+  html = ''
+  constructor(){
+    this.editor = new Editor()
+  }
   /**
    * take behaviour subject with initial value false
    */
@@ -77,6 +94,7 @@ export class AddtaskComponent {
    */
   onSubmit(): void {
     if (this.taskForm.valid) {
+      console.log(this.taskForm.value)
       if (this._taskId$.value) {
         this.taskService
           .editTask(this.taskForm.value, this._taskId$.value)

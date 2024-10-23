@@ -92,7 +92,8 @@
                 </td>
                 <td class="fixed-width">
                   <div>
-                    <span [ngClass]="{ truncated: isTruncated }">
+                    <span [innerHTML]="task.description"></span>
+                    <!-- <span [ngClass]="{ truncated: isTruncated }">
                       {{
                       isTruncated
                       ? (task.description | truncate)
@@ -103,7 +104,7 @@
                     <button (click)="toggleDescription()" class="btn btn-link p-0">
                       {{ isTruncated ? "Show more" : "Show less" }}
                     </button>
-                    }
+                    } -->
                   </div>
                 </td>
                 <td>
@@ -115,8 +116,8 @@
                 <td>
                   {{ task.priority | titlecase}}
                 </td>
-                <td class="d-flex justify-content-center align-items-center">
-                  <div class="action-link">
+                <td >
+                  <div class="action-link d-flex justify-content-center">
                     <a class="view" (click)="onView(task.id)">
                       View <span><i class="fi fi-rr-eye ms-1"></i></span>
                     </a>

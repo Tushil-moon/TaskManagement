@@ -19,10 +19,14 @@
                     }
                 </span>
                 }
-                <div class="form-floating mb-3">
+                <div class="NgxEditor__Wrapper mb-3">
+                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                    <ngx-editor [editor]="editor" [placeholder]="'Type here...'" formControlName="description"></ngx-editor>
+                  </div>
+                <!-- <div class="form-floating mb-3">
                     <textarea class="form-control" placeholder="" formControlName="description" rows="5"></textarea>
                     <label>Description</label>
-                </div>
+                </div> -->
                 @if(taskForm.get('description')?.invalid &&
                 (taskForm.get('description')?.touched || submitted())){
                 <span>

@@ -36,8 +36,11 @@ export class DragDropComponent {
   private taskService = inject(TaskService);
   auth = inject(AuthService);
   private router = inject(Router);
-  private taskStore = inject(TaskStoreService);
+   taskStore = inject(TaskStoreService);
 
+   constructor(){
+    this.taskStore.loadTasks()
+   }
   /** observe task and loading state from taskstore */
   tasks$ = this.taskStore.tasks$;
   loading$ = this.taskStore.loading$;

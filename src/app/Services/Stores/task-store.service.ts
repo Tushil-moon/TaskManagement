@@ -1,23 +1,29 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ComponentStore } from '@ngrx/component-store';
 import { Task } from '../../Modules/Task/Models/task';
 import { TaskService } from '../task/task.service';
 import { Observable, tap, switchMap } from 'rxjs';
+import { signalStore, withState } from '@ngrx/signals';
 
 interface TaskState {
   tasks: Task[];
   loading: boolean;
 }
+const initialState: TaskState = {
+  tasks: [],
+  loading: false,
+};
+
+export const taskStore = signalStore(withState(initialState));
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskStoreService extends ComponentStore<TaskState> {
-  constructor(private taskService: TaskService) {
-    super({ tasks: [], loading: false });
-    this.loadTasks();
+  private taskService = inject(TaskService);
+  constructor() {
+    super(initialState);
   }
-
   /**
    * Selectors to observe tasks and loading state
    */

@@ -5,6 +5,7 @@ import { Task } from '../../Models/task';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 import {
   FilterComponent,
   FilterData,
@@ -17,11 +18,8 @@ import { BehaviorSubject, filter, switchMap, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DeleteComponent } from '../../Modal/delete/delete.component';
 import { LoaderService } from '../../../../Services/task/loader.service';
-import {
-  CdkDragDrop,
-  DragDropModule,
-  moveItemInArray,
-} from '@angular/cdk/drag-drop';
+
+
 
 @Component({
   selector: 'app-tasklist',
@@ -35,7 +33,7 @@ import {
     SearchComponent,
     FormsModule,
     TruncatePipe,
-    DragDropModule,
+    
   ],
 })
 export class TasklistComponent {
