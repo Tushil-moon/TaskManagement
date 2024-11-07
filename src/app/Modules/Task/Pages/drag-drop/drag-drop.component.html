@@ -128,7 +128,7 @@
             <p class="due-date">
               <i class="bi bi-calendar-fill"></i> Completed: {{ item.dueDate }}
             </p>
-            <p class="description" [innerHTML]="item.description"></p>
+            <p class="description" [innerHTML]="sanitizer.bypassSecurityTrustHtml(item.description)"></p>
           </div>
         </div>
       }

@@ -16,6 +16,7 @@ import { SearchComponent } from '../../Components/search/search.component';
 import { AuthService } from '../../../../Services/auth/auth.service';
 import { Router } from '@angular/router';
 import { TaskStoreService } from '../../../../Services/Stores/task-store.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 declare var $: any;
 @Component({
@@ -27,6 +28,7 @@ declare var $: any;
     CarouselModule,
     DragDropModule,
     SearchComponent,
+    
   ],
   providers: [TaskStoreService],
   templateUrl: './drag-drop.component.html',
@@ -37,6 +39,7 @@ export class DragDropComponent {
   auth = inject(AuthService);
   private router = inject(Router);
    taskStore = inject(TaskStoreService);
+   sanitizer =  inject(DomSanitizer);
 
    constructor(){
     this.taskStore.loadTasks()

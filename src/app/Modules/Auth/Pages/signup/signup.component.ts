@@ -8,12 +8,13 @@ import {
 import { AuthService } from '../../../../Services/auth/auth.service';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { BehaviorSubject, filter, switchMap, tap } from 'rxjs';
-import { Router, RouterModule } from '@angular/router';
+import { Router, RouterLink, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ReactiveFormsModule,RouterModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css',
 })
@@ -22,20 +23,20 @@ export class SignupComponent {
   private fb = inject(FormBuilder);
   private router = inject(Router);
 
-  constructor() {
-    this.userData = this.fb.group({
-      email: this.fb.control('', Validators.required),
-      password: this.fb.control('', Validators.required),
-      confirmpassword: this.fb.control('', Validators.required),
-      username: this.fb.control('', Validators.required),
-    });
-  }
-
   /**
    * take userdata as a formgroup
    */
-  userData: FormGroup;
+  userData: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
+    confirmpassword: ['', Validators.required],
+    username: ['', [Validators.required, Validators.minLength(3)]],
+  });
 
+  // Convenient access to form controls in the template
+  get f() {
+    return this.userData.controls;
+  }
   /**
    * take behaviour subject with intial value false
    */

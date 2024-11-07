@@ -58,7 +58,7 @@ th {
 
 p,
 label {
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .truncated {
@@ -136,7 +136,7 @@ tr {
 
 .noItem i {
     font-size: 35px;
-    color: #dbd7d7;
+    color: #000000;
 }
 
 .loader {

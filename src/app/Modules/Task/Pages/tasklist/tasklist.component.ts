@@ -18,6 +18,8 @@ import { BehaviorSubject, filter, switchMap, tap } from 'rxjs';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { DeleteComponent } from '../../Modal/delete/delete.component';
 import { LoaderService } from '../../../../Services/task/loader.service';
+import { FooterComponent } from "../../Components/footer/footer.component";
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 
@@ -33,14 +35,15 @@ import { LoaderService } from '../../../../Services/task/loader.service';
     SearchComponent,
     FormsModule,
     TruncatePipe,
-    
-  ],
+    FooterComponent
+],
 })
 export class TasklistComponent {
   private router = inject(Router);
   private taskService = inject(TaskService);
   private modalService = inject(NgbModal);
   loader = inject(LoaderService);
+   sanitizer = inject(DomSanitizer);
 
   /**
    * hold the filtered task and perform the every filter action this signal

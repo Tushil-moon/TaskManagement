@@ -2,28 +2,28 @@
   "tasks": [
     {
       "title": "Task 2 : Form Control",
-      "description": "Create form control and add validations",
+      "description": "<p><em><strong>Create form control and add validations</strong></em></p>",
       "dueDate": "2024-09-07",
       "priority": "medium",
-      "status": "onhold",
+      "status": "new",
       "id": "c969",
-      "order": 2
+      "order": 1
     },
     {
       "title": "fee",
       "description": "efe",
       "dueDate": "2024-09-21",
       "priority": "high",
-      "status": "in-progress",
+      "status": "pending",
       "id": "ad5b",
-      "order": 3
+      "order": 1
     },
     {
       "title": "frf",
       "description": "zgedsg",
       "dueDate": "2024-09-12",
       "priority": "high",
-      "status": "in-progress",
+      "status": "pending",
       "id": "cb8e",
       "order": 0
     },
@@ -34,7 +34,7 @@
       "priority": "low",
       "status": "pending",
       "id": "41c1",
-      "order": 0
+      "order": 2
     },
     {
       "title": "thrt",
@@ -50,9 +50,9 @@
       "description": "rtrher",
       "dueDate": "2024-09-12",
       "priority": "low",
-      "status": "in-progress",
+      "status": "completed",
       "id": "9f88",
-      "order": 2
+      "order": 0
     },
     {
       "title": "scsdcs",
@@ -87,8 +87,8 @@
       "description": "edbrheazwzsdhzAerh",
       "dueDate": "2024-09-20",
       "priority": "high",
-      "status": "onhold",
-      "order": 3
+      "status": "new",
+      "order": 4
     },
     {
       "title": "new task added #4893897",
@@ -97,16 +97,7 @@
       "priority": "medium",
       "status": "pending",
       "id": "e86d",
-      "order": 2
-    },
-    {
-      "id": "294c",
-      "title": "nweun %7y89ey7",
-      "description": "\nkfvjk neukwfh nugbe nihwedfnh qkh",
-      "dueDate": "2024-10-17",
-      "priority": "medium",
-      "status": "new",
-      "order": 1
+      "order": 4
     },
     {
       "id": "9261",
@@ -123,8 +114,8 @@
       "description": "wefweg",
       "dueDate": "2024-10-24",
       "priority": "medium",
-      "status": "pending",
-      "order": 1
+      "status": "onhold",
+      "order": 3
     },
     {
       "id": "6a1b",
@@ -132,17 +123,8 @@
       "description": "fr fr fr fr",
       "dueDate": "2024-10-24",
       "priority": "medium",
-      "status": "pending",
-      "order": 5
-    },
-    {
-      "id": "c0e1",
-      "title": "fefefef",
-      "description": "<ul><li><p>fefefefefef</p></li><li><p>efefefef</p></li><li><p>ee3grewghw rh</p></li><li><p>whrherherh</p></li></ul>",
-      "dueDate": "2024-10-31",
-      "priority": "low",
       "status": "completed",
-      "order": 0
+      "order": 2
     },
     {
       "id": "3b54",
@@ -159,8 +141,34 @@
       "description": "<p><span style=\"color:#fbca04;\"><span style=\"background-color:#0e8a16;\">dwdwdwdwd</span></span></p>",
       "dueDate": "2024-10-12",
       "priority": "medium",
+      "status": "onhold",
+      "order": 4
+    },
+    {
+      "id": "e165",
+      "title": "Hello",
+      "description": "<p><img src=\"https://firebasestorage.googleapis.com/v0/b/angularchatapp-8b6c5.appspot.com/o/users%2FTMDBtKIR8mUmFJLKEmhjALTUnCF2%2Fprofile.jpg?alt=media&amp;token=95e73b1c-801c-4104-9f15-d2eb6ef8dd30\" alt=\"photo\" title=\"image\"></p>",
+      "dueDate": "2024-10-18",
+      "priority": "medium",
       "status": "in-progress",
-      "order": 1
+      "order": 0
+    },
+    {
+      "id": "fc5c",
+      "title": "herhergh",
+      "description": "<p><span style=\"color:rgb(0, 0, 0);\"><span style=\"background-color:rgb(255, 255, 255);\">&lt;a onmouseover=\"alert(1)\"\\&gt;Click me!&lt;/a&gt;</span></span></p>",
+      "dueDate": "2024-10-17",
+      "priority": "medium",
+      "status": "completed",
+      "order": 3
+    },
+    {
+      "id": "b82d",
+      "title": "fwfwf",
+      "description": "<p><button onclick=\"alert(2)\">clickme</button></p>",
+      "dueDate": "2024-10-10",
+      "priority": "medium",
+      "status": "in-progress"
     }
   ],
   "users": [
@@ -169,6 +177,12 @@
       "email": "tushil@gmail.com",
       "password": "123456",
       "username": "tushil40"
+    },
+    {
+      "id": "8612",
+      "email": "angular99@gmail.com",
+      "password": "123456",
+      "username": "Angular23"
     }
   ]
 }

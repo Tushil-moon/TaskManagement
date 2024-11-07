@@ -14,6 +14,7 @@ import { SearchComponent } from '../search/search.component';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from '../header/header.component';
 import { FooterComponent } from '../footer/footer.component';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-task-list-ob',
@@ -37,6 +38,7 @@ export class TaskListObComponent {
   private modalService = inject(NgbModal);
   private fb = inject(FormBuilder);
   loader = inject(LoaderService);
+  sanitizer = inject(DomSanitizer)
 
   /**
    * Holds the selected sorting criterion for the task list, used to determine the order of tasks.
@@ -130,7 +132,9 @@ export class TaskListObComponent {
   openModal(id?: string, name?: string): void {
     if (name === 'edit') {
       var modalRef = this.modalService.open(AddtaskComponent);
-    } else {
+    } else if(name === 'add'){
+      var modalRef = this.modalService.open(AddtaskComponent);
+    } else{
       var modalRef = this.modalService.open(DeleteComponent);
     }
     if (id) {
