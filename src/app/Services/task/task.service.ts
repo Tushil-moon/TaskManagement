@@ -10,7 +10,7 @@ export class TaskService {
   /**
    * Actual api to performing every request
    */
-  private apiURL = 'http://localhost:3000/tasks';
+  private apiURL = 'https://task-6bw61451s-tushils-projects.vercel.app/tasks';
 
   /**
    * Behaviour subject that handle the triggerd of method
