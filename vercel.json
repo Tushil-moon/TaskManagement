@@ -1,20 +1,20 @@
 {
     "version": 2,
     "functions": {
-      "functions/server.js": {
+      "server.js": {
         "runtime": "nodejs18.x"
       }
     },
     "builds": [
       {
-        "src": "functions/server.js",
+        "src": "server.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "/functions/server.js"
+        "dest": "/server.js"
       }
     ]
   } 
