@@ -12,7 +12,7 @@ export class AuthService {
   /**
    * Actual api to performing every request
    */
-  private apiURL = 'https://task-6bw61451s-tushils-projects.vercel.app/users';
+  private apiURL = 'http://localhost:3000/users';
 
   /**
    * Get Perticular user by sending GET request using Id as query param..
