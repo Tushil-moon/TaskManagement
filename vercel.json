@@ -1,10 +1,5 @@
 {
     "version": 2,
-    "functions": {
-      "server.js": {
-        "runtime": "nodejs18.x"
-      }
-    },
     "builds": [
       {
         "src": "server.js",
@@ -17,5 +12,5 @@
         "dest": "/server.js"
       }
     ]
-  } 
+  }
   
